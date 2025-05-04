@@ -3,10 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Napa AI</title>
+    <title>NapAI</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Wine Recommender</h1>
+		<h2>
+        <input type="text" id="search-input" placeholder="Search for wines...">
+        <select id="sort-select">
+            <option value="popularity.desc">Sort By</option>
+            <option value="release_date.desc">Origin</option>
+            <option value="vote_average.desc">Type</option>
+			<option value="vote_average.desc">Cost</option>
+			<option value="vote_average.desc">Rating</option>
+        </select></h2>
+    </header>
+
+    <main id="movies-container"></main>
+
+    <footer>
+        <button id="prev-btn">Previous</button>
+        <span id="page-number">Page 1</span>
+        <button id="next-btn">Next</button>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
