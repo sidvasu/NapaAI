@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NapAI</title>
-    <link rel="stylesheet" href="style.css">
+    <title>NapaAI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <header>
@@ -20,7 +21,28 @@
         </select></h2>
     </header>
 
-    <main id="movies-container"></main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-white" style="font-size:50px">Top 50 Wines</h1>
+            </div>
+
+            {% for i in range(title|length) %}
+                <div class="col-md-3" style="margin-top:50px">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="text-white">{{ title[i] }}</p>
+                            <h4 class="text-white">{{ variety[i] }}</h4>
+                            <h4 class="text-white">{{ winery[i] }}</h4>
+                            <h4 class="text-white">{{ price[i] }}</h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
 
     <footer>
         <button id="prev-btn">Previous</button>

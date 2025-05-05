@@ -1,8 +1,3 @@
-'''
-def top50():
-    return df.sort_values('points', ascending=False).head(50)
-'''
-
 # train_and_save_model.py
 import numpy as np
 import pandas as pd

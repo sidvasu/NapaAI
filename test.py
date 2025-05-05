@@ -1,6 +1,7 @@
 # load_and_test_model.py
 import joblib
 import numpy as np
+import pandas as pd
 
 def load_model(folder='wine_model'):
     tfidf_vectorizer = joblib.load(f'{folder}/tfidf_vectorizer.joblib')
@@ -21,6 +22,10 @@ def recommend(train_df, results, item_id, num=5):
     recs = results[item_id][:num]
     for score, rec_id in recs:
         print(f"Recommended: {item(train_df, rec_id)} (score: {score:.2f})")
+
+def top50():
+    wine_df = pd.read_csv('data/winemag-data-130k-v2.csv')
+    return wine_df.sort_values('points', ascending=False).head(50)
 
 # Run example
 if __name__ == '__main__':
