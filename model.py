@@ -22,11 +22,12 @@ def main():
     # Load and prepare data
     wine_df = pd.read_csv('data/winemag-data-130k-v2.csv')
     wine_df.dropna(subset=['price', 'description', 'variety'], inplace=True)
+    wine_df = wine_df.drop_duplicates(subset=['title'])
     wine_df.reset_index(drop=True, inplace=True)
     wine_df['wineId'] = wine_df['title'].astype('category').cat.codes
     wine_df['enriched_description'] = wine_df['variety'] + ' ' + wine_df['description']
 
-    train_df, _ = train_test_split(wine_df, train_size=0.05, random_state=42)
+    train_df, _ = train_test_split(wine_df, train_size=0.2, random_state=42)
     train_df.reset_index(drop=True, inplace=True)
 
     print(f"Training on {len(train_df)} samples...")

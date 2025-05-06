@@ -14,5 +14,8 @@ def home():
         price = list(wines['price'].values)
         )
 
+def recommend():
+    return render_template('recommender.html')
+
 if __name__ == "__main__":
     app.run(debug=True)

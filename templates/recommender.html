@@ -3,25 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Napa AI</title>
-    <link rel="stylesheet" href="style.css">
+    <title>NapaAI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<style>
-    .text-white{
-        color:white
-    }
-</style>
-<body style="background-color:black">
+<body>
+    <header>
+        <h1>NapaAI</h1>
+		<h2>
+            <input type="text" id="search-input" placeholder="Search for wines...">
+            <select id="sort-select">
+                <option value="popularity.desc">Sort By</option>
+                <option value="release_date.desc">Origin</option>
+                <option value="vote_average.desc">Type</option>
+                <option value="vote_average.desc">Cost</option>
+                <option value="vote_average.desc">Rating</option>
+            </select>
+        </h2>
+    </header>
 
-    <nav class="navbar" style="background-color:#00a65a">
-        <a class="navbar-brand">Wine Recommender</a>
-        <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/templates/recommender">recommender</a></li>
-            <li><a>Contact</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-white" style="font-size:50px">Top 50 Wines</h1>
+                <form action="">
+                    <input type="text" name="form-control" id=""> <br>
+                    <input type="submit" class="btn btn-lg btn-warning">
+                </form>
+            </div>
 
+            <div class="col-md-3" style="margin-top:50px">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="text-white">{{ title[i] }}</p>
+                        <h4 class="text-white">{{ variety[i] }}</h4>
+                        <h4 class="text-white">{{ winery[i] }}</h4>
+                        <h4 class="text-white">{{ price[i] }}</h4>
+                    </div>
+                </div>
+            </div>
 
+        </div>
+    </div>
+
+    <footer>
+        <button id="prev-btn">Previous</button>
+        <span id="page-number">Page 1</span>
+        <button id="next-btn">Next</button>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
