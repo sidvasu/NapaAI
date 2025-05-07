@@ -22,28 +22,30 @@
         </h2>
     </header>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-white" style="font-size:50px">Top 50 Wines</h1>
+<div class="container" style ="color:white;">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-white" style="font-size:50px">Top 50 Wines</h1>
+        </div>
+
+       {% for i in range(title|length) %}
+    {% if i % 4 == 0 %}
+        <div class="clearfix visible-md-block visible-lg-block"></div>
+    {% endif %}
+
+    <div class="col-md-3 col-sm-6 col-xs-12" style="margin-top:30px;">
+        <div class="card" style="background-color:#2C3F54; padding:15px; border-radius:8px; height:100%;">
+            <div class="card-body">
+                <p class="text-white"><strong>{{ title[i] }}</strong></p>
+                <p class="text-white"><strong>Variety:</strong> {{ variety[i] }}</p>
+                <p class="text-white"><strong>Winery:</strong> {{ winery[i] }}</p>
+                <p class="text-white"><strong>Price (USD):</strong> {{ price[i] }}</p>
             </div>
-
-            {% for i in range(title|length) %}
-                <div class="col-md-3" style="margin-top:50px">
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="text-white">{{ title[i] }}</p>
-                            <h4 class="text-white">{{ variety[i] }}</h4>
-                            <h4 class="text-white">{{ winery[i] }}</h4>
-                            <h4 class="text-white">{{ price[i] }}</h4>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-
-
         </div>
     </div>
+{% endfor %}
+    </div>
+</div>
 
     <footer>
         <button id="prev-btn">Previous</button>
