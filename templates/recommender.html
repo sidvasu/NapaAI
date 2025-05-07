@@ -11,37 +11,41 @@
     <header>
         <h1>NapaAI</h1>
 		<h2>
-            <input type="text" id="search-input" placeholder="Search for wines...">
-            <select id="sort-select">
-                <option value="popularity.desc">Sort By</option>
-                <option value="release_date.desc">Origin</option>
-                <option value="vote_average.desc">Type</option>
-                <option value="vote_average.desc">Cost</option>
-                <option value="vote_average.desc">Rating</option>
-            </select>
+            <a href="/">Top 50 Wines</a>
+            <a href="/recommend">Recommender</a>
         </h2>
     </header>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-white" style="font-size:50px">Top 50 Wines</h1>
-                <form action="">
-                    <input type="text" name="form-control" id=""> <br>
-                    <input type="submit" class="btn btn-lg btn-warning">
+            <div class="d-flex justify-content-center py-1" style="background-color: #2C3F54;">
+                <form action="/recommend" method="POST">
+                    <input type="text" name="user_input" id="search-input" placeholder="Search for wines...">
+                    <select id="sort-select">
+                        <option value="popularity.desc">Sort By</option>
+                        <option value="release_date.desc">Origin</option>
+                        <option value="vote_average.desc">Type</option>
+                        <option value="vote_average.desc">Cost</option>
+                        <option value="vote_average.desc">Rating</option>
+                    </select>
+                    <input type="submit" class="btn btn-warning">
                 </form>
             </div>
 
-            <div class="col-md-3" style="margin-top:50px">
-                <div class="card">
-                    <div class="card-body">
-                        <p class="text-white">{{ title[i] }}</p>
-                        <h4 class="text-white">{{ variety[i] }}</h4>
-                        <h4 class="text-white">{{ winery[i] }}</h4>
-                        <h4 class="text-white">{{ price[i] }}</h4>
+            {% if results and results != -1 %}
+                {% for i in results %}
+                    <div class="col-md-3" style="margin-top:50px">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="text-white">{{ i[0] }}</p>
+                                <h4 class="text-white">{{ i[1] }}</h4>
+                                <h4 class="text-white">{{ i[2] }}</h4>
+                                <h4 class="text-white">{{ i[3] }}</h4>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                {% endfor %}
+            {% endif %}
 
         </div>
     </div>

@@ -1,11 +1,10 @@
-/*NapAI*/
+/*NapaAI*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
-
 
 body {
     background-color: #FFFFFF;
@@ -55,3 +54,8 @@ main {
     max-width: 1200px;
 }
 
+a {
+    margin-left: 20px;
+    margin-right: 20px;
+    color: white;
+}
