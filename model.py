@@ -32,21 +32,17 @@ def main():
 
     print(f"Training on {len(train_df)} samples...")
 
-    # TF-IDF + SVD
     tf = TfidfVectorizer(analyzer='word', ngram_range=(1, 2), min_df=2, max_df=0.8, stop_words='english', sublinear_tf=True)
     tfidf_matrix = tf.fit_transform(train_df['enriched_description'])
 
     svd = TruncatedSVD(n_components=100, random_state=42)
     tfidf_reduced = svd.fit_transform(tfidf_matrix)
 
-    # Train k-NN model
     knn_model = NearestNeighbors(metric='cosine', algorithm='brute')
     knn_model.fit(tfidf_reduced)
 
-    # Get top 6 neighbors (including self, so we skip the first one later)
     distances, indices = knn_model.kneighbors(tfidf_reduced, n_neighbors=6)
 
-    # Build results dictionary using distances and indices
     results = {}
     for idx, (dist_list, neighbor_indices) in enumerate(zip(distances, indices)):
         wine_id = train_df.loc[idx, 'wineId']

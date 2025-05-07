@@ -21,9 +21,9 @@ def recommend():
     title_query = request.form.get('user_input')
     if title_query:
         recs = test.recommend(train_df, results, title_query)
-
         if (recs != -1):
             values = test.extractValues(train_df, recs)
+            
     else:
         values = -1
 
