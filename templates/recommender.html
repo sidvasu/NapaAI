@@ -34,13 +34,13 @@
 
             {% if results and results != -1 %}
                 {% for i in results %}
-                    <div class="col-md-3" style="margin-top:50px">
-                        <div class="card">
+                    <div class="col-md-3 col-sm-6 col-xs-12" style="margin-top:30px;">
+                        <div class="card" style="background-color:#2C3F54; padding:15px; border-radius:8px; height:100%;">
                             <div class="card-body">
-                                <p class="text-white">{{ i[0] }}</p>
-                                <h4 class="text-white">{{ i[1] }}</h4>
-                                <h4 class="text-white">{{ i[2] }}</h4>
-                                <h4 class="text-white">{{ i[3] }}</h4>
+                                <p style="color: white;"><strong>{{ i[0] }}</strong></p>
+                                <p style="color: white;"><strong>Variety:</strong> {{ i[1] }}</p>
+                                <p style="color: white;"><strong>Winery:</strong> {{ i[2] }}</p>
+                                <p style="color: white;"><strong>Price (USD):</strong> ${{ i[3] }}</p>
                             </div>
                         </div>
                     </div>
