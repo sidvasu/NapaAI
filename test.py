@@ -29,8 +29,10 @@ def recommend(train_df, results, title_query, num=5):
 
     print(f"\nRecommending {num} wines similar to: '{title_query}'")
     print("------")
-
     recs = results.get(wine_id, [])[:num]
+
+    for score, rec_id in recs:
+        print(f"Recommended: {item(train_df, rec_id)} (score: {score:.2f})")
 
     return recs
 
