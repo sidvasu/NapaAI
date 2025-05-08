@@ -47,7 +47,7 @@ def main():
     for idx, (dist_list, neighbor_indices) in enumerate(zip(distances, indices)):
         wine_id = train_df.loc[idx, 'wineId']
         similar_items = [(1 - dist_list[i], train_df.loc[neighbor_indices[i], 'wineId']) 
-                        for i in range(1, len(neighbor_indices))]  # skip the first one (self)
+                        for i in range(1, len(neighbor_indices))]
         results[wine_id] = similar_items
 
 
